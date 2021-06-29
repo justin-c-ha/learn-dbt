@@ -5,7 +5,7 @@ models:
     description: one unique customer per row
     columns: 
       - name: customer_id
-        description: primary key for stg_customers
+        description: Primary key for stg_customers
         tests:
           - unique
           - not_null
@@ -17,6 +17,7 @@ models:
           - accepted_values:
               values: ['returned','completed','shipped','placed','return_pending']
       - name: customer_id
+        description: Reference to stg_customer customer_id
         tests:
           - relationships:
               to: ref('stg_customers')

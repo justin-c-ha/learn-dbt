@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: one unique payment per row
+    columns: 
+      - name: payment_id
+        description: Primary key for stg_payments
+        tests:
+          - unique
+      - name: payment_method
+        description: '{{ doc("stripe_payment")}}'
+      - name: amount
+        description: RAW amount in cents, converted to dollars in stg_payments
+
