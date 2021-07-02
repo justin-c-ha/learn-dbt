@@ -5,11 +5,11 @@ with payments as (
     , orderid as order_id
     , paymentmethod as payment_method
     , status
-
-    -- convert amount to dollars, currently in cents
-    , (amount / 100) as amount
+    , {{ cents_to_dollars('amount') }} as amount
     , created as created_at
   from {{ source('stripe','payment') }}
+
+  {{ limit_data_dev('created') }}
 
 )
 

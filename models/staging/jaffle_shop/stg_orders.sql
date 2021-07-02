@@ -8,7 +8,10 @@ with orders as (
 
     from {{ source('jaffle_shop','orders') }}
 
+    {{ limit_data_dev('order_date') }}
+
 )
 
 select *
 from orders
+
